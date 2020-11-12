@@ -7,14 +7,15 @@
 </head>
 <body>
 	<!-- include header -->
-<form>
+<form method="POST" action='/seller/productSuccess/'>
+{% csrf_token %}
   <div class="form-group mb-2">
     <label for="nameProduct" class="">Product Name</label>
-    <input type="text" id="name" placeholder="enter product name">
+    <input type="text" id="name" name="name" placeholder="enter product name">
   </div>
   <div class="form-group">
     <label for="imageProduct">Product Image</label>
-    <input type="file" class="form-control-file" id="image">
+    <input type="file" name="image" class="form-control-file" id="image">
   </div>
   <div class="form-group mb-2">
     <label for="quantityProduct" class="">Product Quantity</label>
@@ -22,12 +23,12 @@
   </div>
   <div class="form-group mb-2">
     <label for="costPerProduct" class="">Product Cost(per unit)</label>
-    <input type="number" id="name" placeholder="enter product cost">
+    <input type="number" name="cost" id="name" placeholder="enter product cost">
   </div>
   
   <div class="form-group mb-2">
     <label for="categorySelect">Choose Category</label>
-    <select class="form-control" id="category">
+    <select class="form-control" id="category" name="category">
       <option>Clothing</option>
       <option>Personal Care</option>
       <option>Yummies</option>
@@ -38,9 +39,9 @@
   
   <div class="form-group mb-2">
     <label for="descriptionProduct">Description</label>
-    <textarea class="form-control" id="description" rows="3"></textarea>
+    <textarea class="form-control" id="description" name="des" rows="3"></textarea>
   </div>
-  <button type="submit" class="btn btn-primary mb-2">Add Product</button>
+  <button type="submit"  class="btn btn-primary mb-2">Add Product</button>
 </form>
     
     

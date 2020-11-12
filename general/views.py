@@ -22,6 +22,7 @@ def auth(request):
         print(check_password(passw,p))
         if (check_password(passw,p)):
             name=models.Seller.objects.get(seller_id=uid)
+            request.session['uid']=uid    
             return render(request,'./seller/profile.html',{'uname':name})
 
     
