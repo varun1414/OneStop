@@ -81,6 +81,10 @@ class Category(models.Model):
     class Meta:
         managed = False
         db_table = 'category'
+    
+    @property
+    def get_id(self):
+        return self.category_id
 
 
 class Customer(models.Model):
@@ -209,6 +213,8 @@ class Product(models.Model):
     class Meta:
         managed = False
         db_table = 'product'
+    
+
 
 
 class Seller(models.Model):
@@ -221,13 +227,17 @@ class Seller(models.Model):
     class Meta:
         managed = False
         db_table = 'seller'
+    def __str__(self):
+        return self.seller_name
 
 
 class Sells(models.Model):
-    pro = models.OneToOneField(Product, models.DO_NOTHING, primary_key=True)
-    seller = models.ForeignKey(Seller, models.DO_NOTHING)
+    pro = models.OneToOneField(Product,on_delete=models.CASCADE, primary_key=True)
+    seller = models.ForeignKey(Seller, on_delete=models.CASCADE)
 
     class Meta:
         managed = False
         db_table = 'sells'
         unique_together = (('pro', 'seller'),)
+
+

@@ -13,7 +13,7 @@ def auth(request):
     uid=request.POST.get('username',False)
     passw=request.POST.get('password',False)
 
-    if models.Logins.objects.all().values('seller_id').filter(seller_id=1):
+    if models.Logins.objects.all().values('seller_id').filter(seller_id=uid):
         print("login")
         p=models.Logins.objects.get(seller_id=uid).passw
 
@@ -22,7 +22,9 @@ def auth(request):
         print(check_password(passw,p))
         if (check_password(passw,p)):
             name=models.Seller.objects.get(seller_id=uid)
+            print(name)
             request.session['uid']=uid    
+            request.session['uname']=str(name)
             return render(request,'./seller/profile.html',{'uname':name})
 
     
