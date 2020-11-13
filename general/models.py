@@ -230,6 +230,10 @@ class Seller(models.Model):
     def __str__(self):
         return self.seller_name
 
+    @property
+    def get_id(self):
+        return self.seller_id
+
 
 class Sells(models.Model):
     pro = models.OneToOneField(Product,on_delete=models.CASCADE, primary_key=True)
