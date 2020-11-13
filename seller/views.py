@@ -1,5 +1,6 @@
 from django.shortcuts import render,HttpResponse
-from general.models import Sells,Product,Category
+from general.models import Sells,Product,Category,Seller,Logins
+from django.contrib.auth.hashers import make_password
 # Create your views here.
 
 def add_product(request):
@@ -24,3 +25,23 @@ def productadded(request):
     
 
     return render(request,'seller/profile.html',{'uname':request.session['uname']})
+
+
+def register_page(request):
+    return render(request,"seller/register.html")
+
+def registerdone(request):
+    email=request.POST.get('email')
+    name=request.POST.get('name')
+    password=request.POST.get('password')
+    address=request.POST.get('address')
+    city=request.POST.get('city')
+    zip=request.POST.get('zip')
+    pno=request.POST.get('pno')
+
+
+    n=Seller(seller_name=name,address=address,contact=pno,email=email)
+    n.save()
+    m=Logins(seller_id=n.seller_id,email=email,password=make_password(password))
+    m.save()
+    return render(request,'general/login.html')
