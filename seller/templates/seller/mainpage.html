@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+    <style>
+      body {
+    background-color: #EEEEEE
+}
+
+a {
+    text-decoration: none !important
+}
+.card-deck{
+    margin-top: 10px;
+    margin-left: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: .5rem;
+}
+
+    </style>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+   {% comment %} <ul class="nav nav-pills nav-fill">
+  <li class="nav-item">
+    <a class="nav-link" href="#">CART<span>{{count}}</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/clothing/">CLOTHING<span>{{count}}</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/care/">PERSONAL CARE<span>{{count}}</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/eatables/">YUMMIES<span>{{count}}</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/homedecor/">HOME DECOR<span>{{count}}</span></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/seasonal/">SEASONAL SPECIALS<span>{{count}}</span></a>
+  </li> {% endcomment %}
+
+{% comment %} {% if f != 1 %}
+  <li class="nav-item">
+    <a class="nav-link" href="/login">Log in as Buyer?</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " href="/login">Log in as Seller?</a>
+  </li>
+  {% endif %}
+</ul> {% endcomment %}
+      <button> <a href="/seller/addproduct/" >New Product ?</a></button>
+
+
+{% for products in product%}
+
+   <div class="card-deck">
+  
+   <div class="card">
+     
+    {% for i in products %}
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">{{i.name}}</h5>
+      <p class="card-text">{{i.description}}</p>
+    </div>
+    <div class="card-footer">
+      <button><a href="/seller/edit/{{ i.pro_id }}">edit</a></button>
+      <button><a href="/seller/delete/{{ i.pro_id }}">delete</a></button>
+     </div>
+    {% endfor %}
+  </div> 
+  {% comment %} <p>{{ i.name }}</p> {% endcomment %}
+ </div> 
+
+  {% endfor %}
+  {% comment %} <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+    </div>
+    <div class="card-footer">
+      <button>ADD TO CART</button>
+    </div>
+  </div>
+  <div class="card">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+    </div>
+    <div class="card-footer">
+      <button>ADD TO CART</button>
+    </div>
+  </div>{% endcomment %}
+
+
+  
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"crossorigin="anonymous"></script>
+  </body>
+</html>

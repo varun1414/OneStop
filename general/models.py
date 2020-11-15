@@ -86,6 +86,9 @@ class Category(models.Model):
     def get_id(self):
         return self.category_id
 
+    def __str__(self):
+        return self.name
+
 
 class Customer(models.Model):
     cust_id = models.AutoField(primary_key=True)
@@ -243,5 +246,9 @@ class Sells(models.Model):
         managed = False
         db_table = 'sells'
         unique_together = (('pro', 'seller'),)
+    
+    @property
+    def pid(self):
+        return self.pro_id
 
 
